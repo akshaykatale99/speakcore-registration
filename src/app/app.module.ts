@@ -10,7 +10,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { StepIndicatorComponent } from './components/step-indicator/step-indicator.component';
 import { KeyInterceptor } from './interceptors/key.interceptor';
 
 @NgModule({
@@ -18,8 +17,7 @@ import { KeyInterceptor } from './interceptors/key.interceptor';
     AppComponent,
     RegistrationComponent,
     HeaderComponent,
-    FooterComponent,
-    StepIndicatorComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
