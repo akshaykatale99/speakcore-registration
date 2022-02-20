@@ -1,0 +1,12 @@
+.header-wrapper {
+    background-color: var(--color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0px;
+}
+
+.header-wrapper img {
+    height: 45px;
+    width: auto;
+}

@@ -1,0 +1,80 @@
+<div class="registration-wrapper">
+    <div class="step-title-wrapper">
+        <h1>{{stepData[activeStep]?.title || 'Step ' + (activeStep + 1)}}</h1>
+    </div>
+    
+    <div class="c-w">
+        <div class="indicator-wrapper" *ngIf="activeStep > 0">
+            <ul>
+                <li *ngFor="let item of stepData; let i = index">
+                    <div [ngClass]="{'item': true, 'complete': activeStep >= i}">
+                        <h4>{{i + 1}}</h4>
+                        <h3>{{item?.indicator}}</h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div [ngSwitch]="activeStep" class="content-wrapper">
+            
+            <div class="content" *ngSwitchCase="0">
+                <p class="note">Please enter the case sensitive password from your official invitation</p>
+                <div class="form">
+                    <div class="input-wrapper">
+                        <label for="password">Password:</label>
+                        <input type="password" [(ngModel)]="password" required />
+                    </div>
+                    <button class="btn btn-primary pull-right" (click)="login()">Login</button>
+                </div>
+            </div>
+
+            <div class="content" [ngClass]="{'loading': isLoading}" *ngSwitchCase="1">
+                <p class="note">Please fill in the following required information</p>
+                <form class="form" [formGroup] = "registrationForm" (ngSubmit) = "onSubmitRegistration()">
+                    <div [ngClass]="{'input-wrapper': true, 'error': registrationForm.controls['firstName']?.touched && registrationForm.controls['firstName']?.invalid}">
+                        <label>First Name: *</label>
+                        <input type="text" formControlName='firstName' />
+                    </div>
+                    <div [ngClass]="{'input-wrapper': true, 'error': registrationForm.controls['lastName']?.touched && registrationForm.controls['lastName']?.invalid}">
+                        <label>Last Name: *</label>
+                        <input type="text" formControlName='lastName' />
+                    </div>
+                    <div [ngClass]="{'input-wrapper': true, 'error': registrationForm.controls['state']?.touched && registrationForm.controls['state']?.invalid}">
+                        <label>State: *</label>
+                        <select name="" placeholder="Select State" formControlName='state'>
+                            <option value="">Select State</option>
+                            <option *ngFor="let item of states$ | async" [value]="item.abbreviation">{{item.name}}</option>
+                            <option value="dl">DL</option>
+                        </select>
+                    </div>
+                    <p class="note">Please provide your email address</p>
+                    <p class="note m-b-15">All meeting correspondence will be sent via email.</p>
+                    <div [ngClass]="{'input-wrapper': true, 'error': registrationForm.controls['email']?.touched && registrationForm.controls['email']?.invalid}">
+                        <label>Email: *</label>
+                        <input type="email" formControlName='email' />
+                        <small class="error-message" *ngIf="registrationForm.controls['email']?.errors?.['email']">Invalid Email</small>
+                    </div>
+                    <div [ngClass]="{'input-wrapper': true, 'error': (registrationForm.controls['confirmEmail']?.touched && registrationForm.controls['confirmEmail']?.invalid) || registrationForm.errors?.['notSame']}">
+                        <label>Confirm Email: *</label>
+                        <input type="email" formControlName='confirmEmail' />
+                        <small class="error-message" *ngIf="registrationForm.controls['confirmEmail']?.errors?.['email']">Invalid Email</small>
+                        <small class="error-message" *ngIf="!registrationForm.controls['confirmEmail']?.errors?.['email'] && registrationForm.errors?.['notSame']">Email does not match</small>
+                    </div>
+                    <div [ngClass]="{'input-wrapper': true}">
+                        <input type="checkbox" formControlName='subscribe'>
+                        <label>Subscribe to Newsletter</label>
+                    </div>
+                    <button class="btn btn-primary pull-right" type="submit" [disabled]="isLoading">
+                        {{isLoading ? 'Please Wait...' : 'Continue'}}
+                    </button>
+                </form>
+            </div>
+
+            <div class="content" *ngSwitchCase="2">
+                <h3 class="title">Thank you for registering!</h3>
+                <p class="note">You should recieve a confirmation email momentarily containing additional details.</p>
+            </div>
+
+        </div>
+    </div>
+</div>

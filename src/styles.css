@@ -1,1 +1,110 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;800&display=swap');
+
+/* theme color variables */
+
+:root {
+    --color-primary: #1b5875;
+    --color-primary-light: #2988b5;
+    --color-light: #ffffff;
+    --color-dark: #000000;
+    --color-text-light: #dedede;
+    --color-text-dark: #555555;
+    --color-light-grey: #dedede;
+    --color-dark-grey: #aaaaaa;
+    --color-danger-light: #ffe8ea;
+    --color-danger-dark: #a93a44;
+}
+
+html, body {
+    height:100%
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    color: var(--color-text-dark);
+}
+
+body{
+    margin: 0px;
+    background-color: var(--color-light-grey);
+    font-family: 'Poppins', sans-serif;
+}
+
+.m-b-15{
+    margin-bottom: 15px !important;
+}
+
+.input-wrapper {
+    margin-bottom: 15px;
+}
+
+.input-wrapper label {
+    color: var(--color-text-dark);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.input-wrapper input[type=text], .input-wrapper input[type=email], .input-wrapper input[type=password], .input-wrapper input[type=number], .input-wrapper select {
+    width: 100%;
+    border: 1px solid var(--color-dark-grey);
+    height: 40px;
+    font-size: 18px;
+    color: var(--color-text-dark);
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 0px 8px;
+    box-sizing: border-box;
+}
+
+/* .input-wrapper input.ng-dirty.ng-invalid, .input-wrapper select.ng-dirty.ng-invalid{
+    border-color: var(--color-danger-dark);
+    background-color: var(--color-danger-light);
+} */
+
+.input-wrapper.error input, .input-wrapper.error select{
+    border-color: var(--color-danger-dark);
+    background-color: var(--color-danger-light);
+}
+
+.input-wrapper input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    margin-right: 12px;
+}
+
+.input-wrapper.error label{
+    color: var(--color-danger-dark) !important;
+}
+
+.input-wrapper .error-message{
+    color: var(--color-danger-dark);
+}
+
+.btn {
+    font-size: 18px;
+    border: none;
+    background-color: var(--color-light-grey);
+    color: var(--color-text-dark);
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.pull-right{
+    float: right;
+}
+
+.pull-left{
+    float: left;
+}
+
+.toast-container .toast-error{
+    background-color: var(--color-danger-dark) !important;
+    color: var(--color-danger-light) !important;
+}

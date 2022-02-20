@@ -1,0 +1,12 @@
+.footer-wrapper {
+    background-color: var(--color-dark-grey);
+    padding: 15px 0px;
+    text-align: center;
+    position: sticky;
+    top: 100vh;
+}
+
+.footer-wrapper h4 {
+    margin: 0px;
+    font-weight: 300;
+}
