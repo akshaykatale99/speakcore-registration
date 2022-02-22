@@ -2,10 +2,10 @@
 
 Simple Angular application that implements a very basic registration site.
 
-For the login page, please use **12345678** as password.
+For the login page, please use `**12345678**` as password.
 
 
-##Project
+## Project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
 
